@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: ["error", { "args": "none" }] */
 export default function handleResponseFromAPI(promise) {
   promise.then((success) => {
     return {
