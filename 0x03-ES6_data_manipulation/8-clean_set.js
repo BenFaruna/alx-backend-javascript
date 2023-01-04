@@ -1,15 +1,14 @@
-export default function cleanSet(set, startString) {
+export default function cleanSet(set, starString) {
   let result = '';
-  let temp = '';
-  if (!startString) {
-    return result;
-  }
 
-  for (const value of set) {
-    if (value.startsWith(startString)) {
-      temp = value.slice(startString.length);
-      result += (result ? `-${temp}` : temp);
-    }
+  if (!starString || starString.length === 0) {
+    return '';
   }
-  return result;
+  set.forEach((element) => {
+    if (element && element.startsWith(starString)) {
+      result += `${element.slice(starString.length)}-`;
+    }
+  });
+
+  return result.slice(0, result.length - 1);
 }
