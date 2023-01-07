@@ -32,18 +32,18 @@ function printTeacher(firstName: string, lastName:string): string {
   return `${firstName[0]}. ${lastName}`
 }
 
-interface printTeacherFunction {
+export interface printTeacherFunction {
   printTeacher(arg0: string, arg1: string): string
 }
 
-interface studentClassInterface {
+export interface StudentClassInterface {
   firstName: string,
   lastName: string,
   workOnHomework(): string,
   displayName(): string,
 }
 
-class StudentClass implements studentClassInterface{
+export class StudentClass implements StudentClassInterface{
   firstName: string;
   lastName: string;
 
@@ -59,6 +59,10 @@ class StudentClass implements studentClassInterface{
   displayName(): string {
     return this.firstName;
   }
+}
+
+export interface StudentConstructor {
+  new(firstName: string, lastName: string): StudentClassInterface;
 }
 
 console.log(teacher3);

@@ -1,17 +1,17 @@
-interface EmployeeInterface {
+export interface EmployeeInterface {
   workFromHome(): string,
   getCoffeeBreak(): string,
 }
 
-interface DirectorInterface extends EmployeeInterface {
+export interface DirectorInterface extends EmployeeInterface {
   workDirectorTasks(): string
 }
 
-interface TeacherInterface extends EmployeeInterface {
+export interface TeacherInterface extends EmployeeInterface {
   workTeacherTasks(): string
 }
 
-class Director implements DirectorInterface {
+export class Director implements DirectorInterface {
   workFromHome(): string {
     return 'Working from home';
   }
@@ -25,7 +25,7 @@ class Director implements DirectorInterface {
   }
 }
 
-class Teacher implements TeacherInterface {
+export class Teacher implements TeacherInterface {
   workFromHome(): string {
     return 'Cannot work from home';
   }
@@ -39,7 +39,7 @@ class Teacher implements TeacherInterface {
   }
 }
 
-function createEmployee(salary: number | string): Director | Teacher {
+export function createEmployee(salary: number | string): Director | Teacher {
   salary = typeof salary === 'number' ? salary : Number(salary.slice(1));
   if (salary < 500) {
     return new Teacher();
@@ -48,14 +48,14 @@ function createEmployee(salary: number | string): Director | Teacher {
   }
 }
 
-function isDirector(employee:Director | Teacher): boolean {
+export function isDirector(employee:DirectorInterface | TeacherInterface): boolean {
   if (employee instanceof Director) {
     return true;
   }
   return false;
 }
 
-function executeWork(employee: any): void {
+export function executeWork(employee: any): void {
   if (isDirector(employee)) {
     console.log(employee.workDirectorTasks());
   } else {
@@ -63,9 +63,9 @@ function executeWork(employee: any): void {
   }
 }
 
-type Subject = 'Math' | 'History';
+export type Subject = 'Math' | 'History';
 
-function teachClass(todayClass: Subject): void {
+export function teachClass(todayClass: Subject): void {
     console.log('Teaching', todayClass);
 }
 
