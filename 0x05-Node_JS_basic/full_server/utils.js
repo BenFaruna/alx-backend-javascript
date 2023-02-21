@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-export default function readDatabase (path) {
+export default function readDatabase(path) {
   return new Promise((resolve, reject) => {
     let data = '';
     const table = {};

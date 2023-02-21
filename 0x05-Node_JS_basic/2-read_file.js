@@ -1,41 +1,45 @@
 const fs = require('fs');
 
-function extractStudentDetails (studentList) {
-  const students = {};
-  let count = 0;
-
-  for (let student of studentList) {
-    if (student !== '') {
-      student = student.trim();
-      student = student.split(',');
-      count += 1;
-
-      try {
-        students[student[student.length - 1]].push(student[0]);
-      } catch (error) {
-        students[student[student.length - 1]] = [student[0]];
-      }
-    }
-  }
-  return [count, students];
-}
-
-function countStudents (path) {
-  let database;
+function countStudents(path) {
+  let myDB;
+  let data = '';
+  const table = {};
 
   try {
-    database = fs.readFileSync(path).toString();
+    myDB = fs.readFileSync(path);
   } catch (error) {
     throw new Error('Cannot load the database');
   }
-  database = database.split('\n').slice(1);
 
-  const [count, table] = extractStudentDetails(database);
+  data = myDB
+    .toString()
+    .split('\n')
+    .filter((item) => item)
+    .map((data) => data.split(','));
 
-  console.log('Number of students:', count);
+  data = data.slice(1, data.length);
 
-  for (const field of Object.keys(table)) {
-    console.log(`Number of students in ${field}: ${table[field].length}. List: ${table[field].join(', ')}`);
+  if (data.length) {
+    console.log(`Number of students: ${data.length}`);
+  } else {
+    console.log('Number of students: 0');
+  }
+
+  data.forEach((student) => {
+    if (!table[student[3]]) {
+      table[student[3]] = [student[0]];
+    } else {
+      table[student[3]].push(student[0]);
+    }
+  });
+  for (const key of Object.keys(table)) {
+    if (key) {
+      console.log(
+        `Number of students in ${key}: ${table[key].length}. List: ${table[
+          key
+        ].join(', ')}`,
+      );
+    }
   }
 }
 
