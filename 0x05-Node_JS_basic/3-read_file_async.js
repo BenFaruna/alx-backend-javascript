@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function extractStudentDetails(studentList) {
+function extractStudentDetails (studentList) {
   const students = {};
   let count = 0;
 
@@ -20,7 +20,7 @@ function extractStudentDetails(studentList) {
   return [count, students];
 }
 
-function countStudents(path) {
+function countStudents (path) {
   return new Promise((resolve, reject) => {
     const result = [];
 
