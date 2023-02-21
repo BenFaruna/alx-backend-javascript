@@ -1,12 +1,11 @@
-const express = require('express');
-
-const port = 1245;
-const hostname = '127.0.0.1';
+import express from 'express';
+import router from './routes/index';
 
 const app = express();
+const port = 1245;
 
-app.listen(port, hostname, () => {
-  console.log(`listening on port ${port}`)
-})
+app.use('/', router);
 
-module.exports = app;
+app.listen(port, () => {});
+
+export default app;
