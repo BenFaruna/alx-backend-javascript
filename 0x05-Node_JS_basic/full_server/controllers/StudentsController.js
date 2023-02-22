@@ -31,7 +31,7 @@ export default class StudentsController {
       const students = table[req.params.major].join(', ');
       console.log(students);
       res.status(200).send(`List: ${students}`);
-      res.end()
+      res.end();
     } catch (error) {
       res.status(500).send('Cannot load the database');
     }
