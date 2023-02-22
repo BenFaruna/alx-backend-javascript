@@ -11,7 +11,8 @@ const app = http.createServer(async (req, res) => {
     const path = process.execArgv.length > 0 ? process.execArgv[0] : 'database.csv';
     const student = await countStudents(path);
     res.write('This is the list of our students\n');
-    res.end(student.join('\n'));
+    res.write(student.join('\n'));
+    res.end();
   }
 });
 
