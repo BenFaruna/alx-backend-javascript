@@ -1,4 +1,9 @@
 function calculateNumber (type, a, b) {
+  
+  if (Number.isNaN(a) || Number.isNaN(b)) {
+    throw TypeError;
+  }
+
   a = Math.round(a);
   b = Math.round(b);
 
@@ -11,6 +16,8 @@ function calculateNumber (type, a, b) {
       return 'Error';
     }
     return a / b;
+  } else {
+    throw TypeError;
   }
 }
 
