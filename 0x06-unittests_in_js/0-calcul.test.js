@@ -1,17 +1,16 @@
-const assert = require('assert');
-const calculateNumber = require('./0-calcul');
 
-describe('calculateNumber', () => {
-  it('checks equality', () => {
-    assert.equal(4, calculateNumber(1, 3));
+const calculateNumber = require('./0-calcul');
+const assert = require('assert');
+
+describe("calculateNumber", () => {
+  it("returns rounded sum", () => {
+    assert.strictEqual(calculateNumber(2, 5), 7);
+    assert.strictEqual(calculateNumber(2.7, 6), 9);
+    assert.strictEqual(calculateNumber(2.2, 5.7), 8);
+    assert.strictEqual(calculateNumber(-2, -1), -3);
+    assert.strictEqual(calculateNumber(-2.4, -5.7), -8);
   });
-  it('checks equality', () => {
-    assert.equal(5, calculateNumber(1, 3.7));
-  });
-  it('checks equality', () => {
-    assert.equal(5, calculateNumber(1.2, 3.7));
-  });
-  it('checks equality', () => {
-    assert.equal(6, calculateNumber(1.5, 3.7));
+  it("should throw error if NaN passed", function () {
+    assert.throws(() => calculateNumber(NaN, 7), "[Function: TypeError]");
   });
 });
