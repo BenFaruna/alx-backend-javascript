@@ -15,6 +15,6 @@ describe('Checks to ensure calculateNUmber is used in sendPaymentRequestToApi', 
   it('Checks the arguments used to call the method', () => {
     expect(Utils.calculateNumber.firstCall.args[1]).to.be.equal(100);
     expect(Utils.calculateNumber.firstCall.args[2]).to.be.equal(20);
+    sinon.restore();
   });
-  sinon.restore();
 });

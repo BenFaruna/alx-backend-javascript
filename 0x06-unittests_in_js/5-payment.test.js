@@ -20,4 +20,5 @@ describe('using hooks to execute code before and after tests', () => {
     sendPaymentRequestToApi(10, 10);
     expect(console.log.calledWith('The total is: 20'));
   })
+  sinon.restore();
 });
